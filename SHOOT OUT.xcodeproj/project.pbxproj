@@ -46,9 +46,9 @@
 		3F435C5222D2B963006D2E94 /* SHOOT OUTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SHOOT OUTUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F435C5622D2B963006D2E94 /* SHOOT_OUTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHOOT_OUTUITests.swift; sourceTree = "<group>"; };
 		3F435C5822D2B963006D2E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F435C6C22D2D9D3006D2E94 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogJoystick.swift; path = ../../../.Trash/AnalogJoystick.swift; sourceTree = "<group>"; };
+		3F435C6C22D2D9D3006D2E94 /* AnalogJoystick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogJoystick.swift; sourceTree = "<group>"; };
 		3F435C7022D2D9E1006D2E94 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		3F435C8522D2EA34006D2E94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../../../Documents/GitHub/JoystickTank/JoystickTank/AppDelegate.swift; sourceTree = "<group>"; };
+		3F435C8522D2EA34006D2E94 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "/Users/jamesgraupera/Documents/GitHub/Shoot-Out/SHOOT OUT/AppDelegate.swift"; sourceTree = "<absolute>"; };
 		3F435C8F22D2EDD5006D2E94 /* Gameplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameplay.swift; sourceTree = "<group>"; };
 		3F435C9122D2EE5B006D2E94 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -433,7 +433,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66N7GM7GH9;
+				DEVELOPMENT_TEAM = TTWWS4GAXY;
 				INFOPLIST_FILE = "SHOOT OUT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +451,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 66N7GM7GH9;
+				DEVELOPMENT_TEAM = TTWWS4GAXY;
 				INFOPLIST_FILE = "SHOOT OUT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

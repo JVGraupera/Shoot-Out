@@ -48,9 +48,9 @@ class ViewController: UIViewController {
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
         skView.ignoresSiblingOrder = true
-           skView.showsFPS = true
-           skView.showsNodeCount = true
-            skView.showsPhysics = true
+//           skView.showsFPS = true
+//           skView.showsNodeCount = true
+//            skView.showsPhysics = true
     }
     
 }
