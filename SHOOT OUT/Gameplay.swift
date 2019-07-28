@@ -20,6 +20,8 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     var Ammo: SKLabelNode!
     let velocityMultiplier: CGFloat = 0.07
     var gameTimer: Timer?
+    var highScoreLabel = SKLabelNode()
+    var highScore = UserDefaults().integer(forKey: "HighScore")
     
     enum NodesZPosition: CGFloat {
         case background, hero, joystick
@@ -58,10 +60,19 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         bullet.removeFromParent()
         
         if (bad.name == "hero") || (bullet.name == "hero") {
+            self.resetButton.isHidden = false
+            highScoreLabel.isHidden = false
             endGame()
-            Reset()
+            //Reset()
+            if score > UserDefaults().integer(forKey: "HighScore") {
+                saveHighScore()
+            }
         }
         
+    }
+    func saveHighScore() {
+        UserDefaults().set(score, forKey: "HighScore")
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "HighScore"))"
     }
     lazy var background: SKSpriteNode = {
         var sprite = SKSpriteNode(color: UIColor(displayP3Red: 200/255, green: 170/255, blue: 120/255, alpha: 1.0), size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
@@ -71,16 +82,22 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     lazy var resetButton: UIButton = {
-        var button = UIButton(frame: CGRect(x: ScreenSize.width * 0.4, y: ScreenSize.height * 0.4, width: 100, height: 200))
+        var button = UIButton(frame: CGRect(x: ScreenSize.width * 0.4, y: ScreenSize.height * 0.5, width: 100, height: 100))
         button.setTitle("Play", for: .normal)
+        button.setImage(UIImage(named: "Reset"), for: .normal)
         button.transform = button.transform.rotated(by: 1.57)
         button.addTarget(self, action: #selector(Reset), for: .touchUpInside)
-        button.addTarget(self, action: #selector(mainButton), for: .touchUpInside)
+        //button.addTarget(self, action: #selector(mainButton), for: .touchUpInside)
         return button
     }()
     func endGame() {
         shootTimer.invalidate()
         BadTimer.invalidate()
+        for child in self.children {
+            if child.name == "bad" || child.name == "Cac" || child.name == "bullet" || child.name == " badBullet" || child.name == "Dual" {
+                child.removeFromParent()
+            }
+        }
     }
     // Spawns enemy
     @objc func spawnBad() {
@@ -196,6 +213,16 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         playButton(view: view)
         ScoreBoard(view: view)
         addChild(background)
+        view.addSubview(resetButton)
+        resetButton.isHidden = true
+        highScoreLabel.position = CGPoint(x: ScreenSize.width * 0, y: ScreenSize.height * 0.2)
+        highScoreLabel.fontName = "Chalkduster"
+        highScoreLabel.fontSize = 20
+        highScoreLabel.zRotation = CGFloat(-Double.pi / 2)
+        highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "HighScore"))"
+        self.addChild(highScoreLabel)
+        highScoreLabel.isHidden = true
+        
     }
     func clearButton(view : SKView) {
         for locView in view.subviews {
@@ -217,15 +244,12 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     // Reset the play area
    @objc func Reset() {
-        for child in self.children {
-            if child.name == "bad" || child.name == "Cac" || child.name == "bullet" || child.name == " badBullet" || child.name == "Dual" {
-                child.removeFromParent()
-            }
-        }
         score = 0
         hero.position = CGPoint(x: 0, y: 0)
         analogJoystickTwo.removeFromParent()
         analogJoystick.removeFromParent()
+        self.resetButton.isHidden = true
+        highScoreLabel.isHidden = true
         setupNodes()
         
     }

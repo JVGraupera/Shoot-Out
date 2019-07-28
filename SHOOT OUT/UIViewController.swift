@@ -29,10 +29,6 @@ class ViewController: UIViewController {
 //        
 //        self.view.addSubview(button)
     }
-    @objc func fire(){
-        Gameplay().shoot()
-        print("James")
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
