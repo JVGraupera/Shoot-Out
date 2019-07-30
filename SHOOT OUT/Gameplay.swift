@@ -17,11 +17,12 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     var BadTimer = Timer()
     var shootTimer = Timer()
     var ScoreLabel: SKLabelNode!
-    var Ammo: SKLabelNode!
     let velocityMultiplier: CGFloat = 0.07
     var gameTimer: Timer?
     var highScoreLabel = SKLabelNode()
     var highScore = UserDefaults().integer(forKey: "HighScore")
+    var moveLabel: SKLabelNode!
+    var aimLabel: SKLabelNode!
     
     enum NodesZPosition: CGFloat {
         case background, hero, joystick
@@ -82,7 +83,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         return sprite
     }()
     lazy var resetButton: UIButton = {
-        var button = UIButton(frame: CGRect(x: ScreenSize.width * 0.4, y: ScreenSize.height * 0.5, width: 100, height: 100))
+        var button = UIButton(frame: CGRect(x: ScreenSize.width * 0.5, y: ScreenSize.height * 0.5 - 50, width: 100, height: 100))
         button.setTitle("Play", for: .normal)
         button.setImage(UIImage(named: "Reset"), for: .normal)
         button.transform = button.transform.rotated(by: 1.57)
@@ -196,13 +197,13 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     
       lazy var analogJoystick: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 100, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
-        js.position = CGPoint(x: ScreenSize.width * -0.3, y: ScreenSize.height * 0.38)
+        js.position = CGPoint(x: ScreenSize.width * -0.5 + 70, y: ScreenSize.height * 0.38)
         js.zPosition = NodesZPosition.joystick.rawValue
         return js
       }()
     lazy var analogJoystickTwo: AnalogJoystick = {
         let js = AnalogJoystick(diameter: 100, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
-        js.position = CGPoint(x: ScreenSize.width * -0.5 + 90, y: ScreenSize.height * -0.5 + 80)
+        js.position = CGPoint(x: ScreenSize.width * -0.5 + 70, y: ScreenSize.height * -0.5 + 80)
         js.zPosition = NodesZPosition.joystick.rawValue
         return js
     }()
@@ -212,16 +213,37 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
         playButton(view: view)
         ScoreBoard(view: view)
+        ScoreLabel.isHidden = true
         addChild(background)
         view.addSubview(resetButton)
         resetButton.isHidden = true
-        highScoreLabel.position = CGPoint(x: ScreenSize.width * 0, y: ScreenSize.height * 0.2)
-        highScoreLabel.fontName = "Chalkduster"
+        highScoreLabel.position = CGPoint(x: ScreenSize.width * 0.3, y: 0)
+        highScoreLabel.fontName = "AmericanTypewriter"
         highScoreLabel.fontSize = 20
         highScoreLabel.zRotation = CGFloat(-Double.pi / 2)
         highScoreLabel.text = "High Score: \(UserDefaults().integer(forKey: "HighScore"))"
         self.addChild(highScoreLabel)
-        highScoreLabel.isHidden = true
+        setupJoystick()
+        setupJoystickZ()
+        moveTutorial()
+        aimTutorial()
+    }
+    func moveTutorial() {
+        moveLabel = SKLabelNode(fontNamed: "AmericanTypewriter")
+        moveLabel.text = "This joystick moves you"
+        moveLabel.fontSize = 15
+        moveLabel.zRotation = CGFloat(-Double.pi/2)
+        moveLabel.position = CGPoint(x: analogJoystick.position.x + 55, y: analogJoystick.position.y - 20)
+        addChild(moveLabel)
+        
+    }
+    func aimTutorial() {
+        aimLabel = SKLabelNode(fontNamed: "AmericanTypewriter")
+        aimLabel.text = "This joystick aims you"
+        aimLabel.fontSize = 15
+        aimLabel.zRotation = CGFloat(-Double.pi/2)
+        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + 55, y: analogJoystickTwo.position.y + 20)
+        addChild(aimLabel)
         
     }
     func clearButton(view : SKView) {
@@ -234,36 +256,37 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
    @objc func setupNodes() {
         addChild(hero)
         shootTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(shoot), userInfo: nil, repeats: true)
-        BadTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(spawnEnemy), userInfo: nil, repeats: true)
+        BadTimer = Timer.scheduledTimer(timeInterval: 4.2, target: self, selector: #selector(spawnEnemy), userInfo: nil, repeats: true)
         //addChild(crossHair)
         for _ in 1...4 {
             SpawnCac()
         }
-        setupJoystick()
-        setupJoystickZ()
+        ScoreLabel.isHidden = false
+        highScoreLabel.isHidden = true
+        moveLabel.isHidden = true
+        aimLabel.isHidden = true
     }
-    // Reset the play area
+    // Resets the play area
    @objc func Reset() {
         score = 0
         hero.position = CGPoint(x: 0, y: 0)
-        analogJoystickTwo.removeFromParent()
-        analogJoystick.removeFromParent()
         self.resetButton.isHidden = true
-        highScoreLabel.isHidden = true
         setupNodes()
         
     }
+    //Sets up the play button
     func playButton(view : SKView) {
          let gameButton = UIButton()
         let image = UIImage(named: "Draw!png")
         gameButton.setTitle("P", for: .normal)
-        gameButton.frame = CGRect(x: ScreenSize.width * 0.4, y: ScreenSize.height * 0.4, width: 150, height: 100)
+        gameButton.frame = CGRect(x: ScreenSize.width * 0.5 , y: ScreenSize.height * 0.5 - 50, width: 150, height: 100)
         gameButton.setImage(image, for: .normal)
         gameButton.transform = gameButton.transform.rotated(by: 1.57)
         gameButton.addTarget(self, action: #selector(setupNodes), for: .touchUpInside)
         gameButton.addTarget(self, action: #selector(mainButton), for: .touchUpInside)
         view.addSubview(gameButton)
     }
+    //removes a given button
     @IBAction func mainButton(sender: UIButton) {
         sender.removeFromSuperview()
     }
@@ -318,7 +341,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     
     func ScoreBoard(view: SKView) {
-        ScoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        ScoreLabel = SKLabelNode(fontNamed: "AmericanTypewriter")
         ScoreLabel.zPosition = 40
         ScoreLabel.text = "0"
         ScoreLabel.position = CGPoint(x: ScreenSize.width * 0.4, y: 0)
@@ -337,7 +360,13 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     @objc func spawnEnemy()
     {
-        let randPosNumbr = arc4random() % 4
+        var randPosNumbr = arc4random() % 4
+        if score > 20 {
+            randPosNumbr = arc4random() % 2
+        }
+        if score > 40 {
+            randPosNumbr = arc4random() % 1
+        }
         switch randPosNumbr {
         case 0:
             spawnDual()
