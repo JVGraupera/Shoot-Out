@@ -157,7 +157,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         }
         let delay = SKAction.wait(forDuration: 0.1)
         let seq = SKAction.sequence([track, delay])
-        let shootDelay = SKAction.wait(forDuration: 0.85)
+        let shootDelay = SKAction.wait(forDuration: 0.75)
         let seqShoot = SKAction.sequence([shootDelay, shootTwo, shootDelay, shoot])
         let shooter = SKAction.repeatForever(seqShoot)
         let aim = SKAction.repeatForever(seq)
@@ -261,6 +261,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         for _ in 1...4 {
             SpawnCac()
         }
+        hero.position = CGPoint(x: 0, y: 0)
         ScoreLabel.isHidden = false
         highScoreLabel.isHidden = true
         moveLabel.isHidden = true
@@ -365,7 +366,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
             randPosNumbr = arc4random() % 2
         }
         if score > 40 {
-            randPosNumbr = arc4random() % 1
+            randPosNumbr = 0
         }
         switch randPosNumbr {
         case 0:
