@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F03957C23367A14004BD11A /* StartupScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03957B23367A13004BD11A /* StartupScene.swift */; };
+		3F03957E23369C28004BD11A /* PickDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03957D23369C28004BD11A /* PickDiff.swift */; };
+		3F0395822336B2A3004BD11A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0395812336B2A3004BD11A /* Store.swift */; };
+		3F03958F2337117F004BD11A /* WalkingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03958E2337117F004BD11A /* WalkingAnimation.swift */; };
 		3F435C3C22D2B962006D2E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F435C3A22D2B962006D2E94 /* Main.storyboard */; };
 		3F435C3E22D2B963006D2E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F435C3D22D2B963006D2E94 /* Assets.xcassets */; };
 		3F435C4C22D2B963006D2E94 /* SHOOT_OUTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F435C4B22D2B963006D2E94 /* SHOOT_OUTTests.swift */; };
@@ -36,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F03957B23367A13004BD11A /* StartupScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupScene.swift; sourceTree = "<group>"; };
+		3F03957D23369C28004BD11A /* PickDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDiff.swift; sourceTree = "<group>"; };
+		3F0395812336B2A3004BD11A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		3F03958E2337117F004BD11A /* WalkingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingAnimation.swift; sourceTree = "<group>"; };
 		3F435C2D22D2B962006D2E94 /* SHOOT OUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SHOOT OUT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F435C3B22D2B962006D2E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F435C3D22D2B963006D2E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -79,6 +87,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F03958323370999004BD11A /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				3F03958E2337117F004BD11A /* WalkingAnimation.swift */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 		3F435C2422D2B962006D2E94 = {
 			isa = PBXGroup;
 			children = (
@@ -108,9 +124,13 @@
 				3F435C3A22D2B962006D2E94 /* Main.storyboard */,
 				3F435C7022D2D9E1006D2E94 /* Extensions.swift */,
 				3F435C3D22D2B963006D2E94 /* Assets.xcassets */,
-				3F435C4222D2B963006D2E94 /* Info.plist */,
 				3F435C9122D2EE5B006D2E94 /* UIViewController.swift */,
+				3F03957B23367A13004BD11A /* StartupScene.swift */,
+				3F03957D23369C28004BD11A /* PickDiff.swift */,
 				3F435C8F22D2EDD5006D2E94 /* Gameplay.swift */,
+				3F0395812336B2A3004BD11A /* Store.swift */,
+				3F435C4222D2B963006D2E94 /* Info.plist */,
+				3F03958323370999004BD11A /* Animations */,
 			);
 			path = "SHOOT OUT";
 			sourceTree = "<group>";
@@ -269,9 +289,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F435C6D22D2D9D3006D2E94 /* AnalogJoystick.swift in Sources */,
+				3F03957E23369C28004BD11A /* PickDiff.swift in Sources */,
 				3F435C8622D2EA34006D2E94 /* AppDelegate.swift in Sources */,
+				3F0395822336B2A3004BD11A /* Store.swift in Sources */,
 				3F435C9022D2EDD5006D2E94 /* Gameplay.swift in Sources */,
+				3F03958F2337117F004BD11A /* WalkingAnimation.swift in Sources */,
 				3F435C7122D2D9E1006D2E94 /* Extensions.swift in Sources */,
+				3F03957C23367A14004BD11A /* StartupScene.swift in Sources */,
 				3F435C9222D2EE5C006D2E94 /* UIViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -449,7 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "James.SHOOT-OUT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -467,7 +491,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "James.SHOOT-OUT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

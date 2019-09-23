@@ -21,13 +21,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         setupViews()
-        
-//        let button = UIButton(frame: CGRect(x: 100, y: 400, width: 100, height: 50))
-//        button.backgroundColor = .green
-//        button.setTitle("Test Button", for: .normal)
-//        button.addTarget(self, action: #selector(fire), for: .touchUpInside)
-//        
-//        self.view.addSubview(button)
     }
     
     override func didReceiveMemoryWarning() {
@@ -40,13 +33,13 @@ class ViewController: UIViewController {
         
         skView.frame = CGRect(x: 0.0, y: 0.0, width: ScreenSize.width, height: ScreenSize.height)
         
-        let scene = Gameplay(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
+        let scene = StartupScene(size: CGSize(width: ScreenSize.width, height: ScreenSize.height))
         scene.scaleMode = .aspectFill
         skView.presentScene(scene)
         skView.ignoresSiblingOrder = true
 //           skView.showsFPS = true
 //           skView.showsNodeCount = true
-//            skView.showsPhysics = true
+            //skView.showsPhysics = true
     }
     
 }
