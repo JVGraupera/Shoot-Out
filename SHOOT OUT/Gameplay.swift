@@ -639,14 +639,14 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         
     }
     lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.15, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
+        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
         js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * 0.375)
         js.zPosition = NodesZPosition.joystick.rawValue
         js.name = "joy"
         return js
     }()
     lazy var analogJoystickTwo: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.15, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
+        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
         js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * -0.375)
         js.zPosition = NodesZPosition.joystick.rawValue
         js.name = "joy"
@@ -745,7 +745,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         ScoreLabel.zPosition = 40
         ScoreLabel.fontColor = UIColor.black
         ScoreLabel.text = "0"
-        ScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
+        ScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 25
         ScoreLabel.color = UIColor.black
         ScoreLabel.position = CGPoint(x: ScreenSize.width * 0.4, y: 0)
         ScoreLabel.zRotation = -1.57
