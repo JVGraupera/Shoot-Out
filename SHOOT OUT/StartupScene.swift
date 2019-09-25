@@ -25,9 +25,9 @@ class StartupScene: SKScene {
     func titleSetup() {
         let title = SKSpriteNode(imageNamed: "GameTitle")
         title.size = CGSize(width: 150, height: 100)
-        title.scaleTo(screenWidthPercentage: 0.3)
+        title.scaleTo(screenWidthPercentage: 0.4)
         title.zRotation = -1.57
-        title.position = CGPoint(x: ScreenSize.width * 0.1, y: ScreenSize.height * 0.05)
+        title.position = CGPoint(x: ScreenSize.width * 0.1, y: ScreenSize.height * 0.1)
         addChild(title)
     }
     //Plays the game
