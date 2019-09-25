@@ -39,7 +39,7 @@ class Store: SKScene {
         label.position = CGPoint(x: x, y: y)
         label.text = text
         label.zRotation = -1.57
-        label.fontSize = 15
+        label.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
         label.name = "storeLabel"
         addChild(label)
     }
@@ -48,6 +48,7 @@ class Store: SKScene {
         playButton.texture = SKTexture(imageNamed: "Play3.0")
         playButton.position = CGPoint(x: ScreenSize.width * -0.4 , y: 0)
         playButton.size = CGSize(width: 100, height: 75)
+        playButton.scaleTo(screenWidthPercentage: 0.2)
         playButton.zRotation = -1.57
         addChild(playButton)
         
@@ -62,7 +63,7 @@ class Store: SKScene {
         goldLabel.position = CGPoint(x: ScreenSize.width * 0.4, y: ScreenSize.height * 0.35)
         goldLabel.fontName = "AmericanTypewriter"
         goldLabel.fontColor = UIColor.white
-        goldLabel.fontSize = 20
+        goldLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
         goldLabel.zRotation = CGFloat(-Double.pi / 2)
         goldLabel.text = "Gold: \(UserDefaults().integer(forKey: "gold"))"
         self.addChild(goldLabel)
@@ -96,6 +97,7 @@ class Store: SKScene {
         button.zRotation = -1.57
         button.position = pos
         button.size = CGSize(width: 100, height: 75)
+        button.scaleTo(screenWidthPercentage: 0.2)
         addChild(button)
     }
     func spawnPrev(name: String, pos: CGPoint, node: SKSpriteNode, scale: CGFloat, zPos: CGFloat) {
@@ -237,31 +239,31 @@ class Store: SKScene {
         selected = SKLabelNode(text: "Equipped")
         selected.fontName = "AmericanTypewriter"
         selected.fontColor = UIColor.green
-        selected.fontSize = 20
+        selected.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
         selected.isHidden = true
-        selected.position = CGPoint(x: rickPrev.position.x + 80, y: rickPrev.position.y)
+        selected.position = CGPoint(x: rickPrev.position.x, y: rickPrev.position.y)
         selected.zRotation = CGFloat(-Double.pi / 2)
         self.addChild(selected)
     }
     func updateSelected() {
         if UserDefaults().integer(forKey: "rick") == 2 {
-            selected.position = CGPoint(x: rickPrev.position.x + 80, y: rickPrev.position.y)
+            selected.position = CGPoint(x: rickPrev.position.x + ScreenSize.width * 0.19, y: rickPrev.position.y)
             selected.isHidden = false
         }
         if UserDefaults().integer(forKey: "kric") == 2 {
-            selected.position = CGPoint(x: kricPrev.position.x + 80, y: kricPrev.position.y)
+            selected.position = CGPoint(x: kricPrev.position.x + ScreenSize.width * 0.19, y: kricPrev.position.y)
             selected.isHidden = false
         }
         if UserDefaults().integer(forKey: "blue") == 2 {
-            selected.position = CGPoint(x: bluePrev.position.x + 80, y: bluePrev.position.y)
+            selected.position = CGPoint(x: bluePrev.position.x + ScreenSize.width * 0.19, y: bluePrev.position.y)
             selected.isHidden = false
         }
         if UserDefaults().integer(forKey: "plaid") == 2 {
-            selected.position = CGPoint(x: plaidPrev.position.x + 80, y: plaidPrev.position.y)
+            selected.position = CGPoint(x: plaidPrev.position.x + ScreenSize.width * 0.19, y: plaidPrev.position.y)
             selected.isHidden = false
         }
         if UserDefaults().integer(forKey: "goldSkin") == 2 {
-            selected.position = CGPoint(x: goldPrev.position.x + 80, y: goldPrev.position.y)
+            selected.position = CGPoint(x: goldPrev.position.x + ScreenSize.width * 0.19, y: goldPrev.position.y)
             selected.isHidden = false
         }
     }
@@ -271,38 +273,38 @@ class Store: SKScene {
         setupSelected()
         goldSetup()
         addChild(background)
-        spawnPrev(name: "Bad4", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.35), node: rickPrev, scale: 0.3, zPos: 2)
-        spawnPrev(name: "kcirNoLegs", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.35), node: rickLegPrev, scale: 0.25, zPos: 1)
-        spawnPrev(name: "Kric2.0", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.2), node: kricPrev, scale: 0.3, zPos: 2)
-        spawnPrev(name: "kcirNoLegs", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.2), node: kricLegPrev, scale: 0.4, zPos: 1)
-        spawnPrev(name: "babyBlue", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.025), node: bluePrev, scale: 0.3, zPos: 2)
-        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.025), node: blueLegPrev, scale: 0.3, zPos: 1)
-        spawnPrev(name: "plaid3.0", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.15), node: plaidPrev, scale: 0.3, zPos: 2)
-        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.15), node: plaidLegPrev, scale: 0.3, zPos: 1)
-        spawnPrev(name: "solidGold", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.35), node: goldPrev, scale: 0.3, zPos:  2)
-        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.35), node: goldLegPrev, scale: 0.3, zPos: 1)
-        spawnButton(button: rickEquip, pos: CGPoint(x: rickPrev.position.x - 100 , y: rickPrev.position.y), imageName: "Equip")
-        spawnButton(button: kricBuy, pos: CGPoint(x: kricPrev.position.x - 100 , y: kricPrev.position.y), imageName: "buy")
-        spawnButton(button: kricEquip, pos: CGPoint(x: kricPrev.position.x - 100 , y: kricPrev.position.y), imageName: "Equip")
-        spawnButton(button: blueBuy, pos: CGPoint(x: bluePrev.position.x - 100 , y: bluePrev.position.y), imageName: "buy")
-        spawnButton(button: blueEquip, pos: CGPoint(x: bluePrev.position.x - 100 , y: bluePrev.position.y), imageName: "Equip")
-        spawnButton(button: plaidBuy, pos: CGPoint(x: plaidPrev.position.x - 100 , y: plaidPrev.position.y), imageName: "buy")
-        spawnButton(button: plaidEquip, pos: CGPoint(x: kricPrev.position.x - 100 , y: plaidPrev.position.y), imageName: "Equip")
-        spawnButton(button: goldBuy, pos: CGPoint(x: goldPrev.position.x - 100 , y: goldPrev.position.y), imageName: "buy")
-        spawnButton(button: goldEquip, pos: CGPoint(x: goldPrev.position.x - 100 , y: goldPrev.position.y), imageName: "Equip")
+        spawnPrev(name: "Bad4", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.36), node: rickPrev, scale: 0.3, zPos: 2)
+        spawnPrev(name: "kcirNoLegs", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.36), node: rickLegPrev, scale: 0.25, zPos: 1)
+        spawnPrev(name: "Kric2.0", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.175), node: kricPrev, scale: 0.3, zPos: 2)
+        spawnPrev(name: "kcirNoLegs", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0.175), node: kricLegPrev, scale: 0.4, zPos: 1)
+        spawnPrev(name: "babyBlue", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0), node: bluePrev, scale: 0.3, zPos: 2)
+        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * 0), node: blueLegPrev, scale: 0.3, zPos: 1)
+        spawnPrev(name: "plaid3.0", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.175), node: plaidPrev, scale: 0.3, zPos: 2)
+        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.175), node: plaidLegPrev, scale: 0.3, zPos: 1)
+        spawnPrev(name: "solidGold", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.36), node: goldPrev, scale: 0.3, zPos:  2)
+        spawnPrev(name: "jeanNoLeg", pos: CGPoint(x: ScreenSize.width * 0.05, y: ScreenSize.height * -0.36), node: goldLegPrev, scale: 0.3, zPos: 1)
+        spawnButton(button: rickEquip, pos: CGPoint(x: rickPrev.position.x - ScreenSize.width * 0.25 , y: rickPrev.position.y), imageName: "Equip")
+        spawnButton(button: kricBuy, pos: CGPoint(x: kricPrev.position.x - ScreenSize.width * 0.25 , y: kricPrev.position.y), imageName: "buy")
+        spawnButton(button: kricEquip, pos: CGPoint(x: kricPrev.position.x - ScreenSize.width * 0.25 , y: kricPrev.position.y), imageName: "Equip")
+        spawnButton(button: blueBuy, pos: CGPoint(x: bluePrev.position.x - ScreenSize.width * 0.25 , y: bluePrev.position.y), imageName: "buy")
+        spawnButton(button: blueEquip, pos: CGPoint(x: bluePrev.position.x - ScreenSize.width * 0.25 , y: bluePrev.position.y), imageName: "Equip")
+        spawnButton(button: plaidBuy, pos: CGPoint(x: plaidPrev.position.x - ScreenSize.width * 0.25 , y: plaidPrev.position.y), imageName: "buy")
+        spawnButton(button: plaidEquip, pos: CGPoint(x: kricPrev.position.x - ScreenSize.width * 0.25 , y: plaidPrev.position.y), imageName: "Equip")
+        spawnButton(button: goldBuy, pos: CGPoint(x: goldPrev.position.x - ScreenSize.width * 0.25 , y: goldPrev.position.y), imageName: "buy")
+        spawnButton(button: goldEquip, pos: CGPoint(x: goldPrev.position.x - ScreenSize.width * 0.25 , y: goldPrev.position.y), imageName: "Equip")
         spawnShop(skin: "kric", buyButton: kricBuy, equipButton: kricEquip)
         spawnShop(skin: "goldSkin", buyButton: goldBuy, equipButton: goldEquip)
         spawnShop(skin: "blue", buyButton: blueBuy, equipButton: blueEquip)
         spawnShop(skin: "plaid", buyButton: plaidBuy, equipButton: plaidEquip)
-        spawnLabel(text: "Cost: 100", x: Double(kricPrev.position.x) - 60, y: Double(kricPrev.position.y))
-        spawnLabel(text: "Cost: 100", x: Double(bluePrev.position.x) - 60, y: Double(bluePrev.position.y))
-        spawnLabel(text: "Cost: 100", x: Double(plaidPrev.position.x) - 60, y: Double(plaidPrev.position.y))
-        spawnLabel(text: "Cost: 1000", x: Double(goldPrev.position.x) - 60, y: Double(goldPrev.position.y))
-        spawnLabel(text: "Rick", x: Double(rickPrev.position.x) + 60, y: Double(rickPrev.position.y))
-        spawnLabel(text: "Kric", x: Double(kricPrev.position.x) + 60, y: Double(kricPrev.position.y))
-        spawnLabel(text: "Little Boy Blue", x: Double(bluePrev.position.x) + 60, y: Double(bluePrev.position.y))
-        spawnLabel(text: "Bad In Plaid", x: Double(plaidPrev.position.x) + 60, y: Double(plaidPrev.position.y))
-        spawnLabel(text: "Golden Boy", x: Double(goldPrev.position.x) + 60, y: Double(goldPrev.position.y))
+        spawnLabel(text: "Cost: 100", x: Double(kricPrev.position.x - ScreenSize.width * 0.15), y: Double(kricPrev.position.y))
+        spawnLabel(text: "Cost: 100", x: Double(bluePrev.position.x - ScreenSize.width * 0.15), y: Double(bluePrev.position.y))
+        spawnLabel(text: "Cost: 100", x: Double(plaidPrev.position.x - ScreenSize.width * 0.15), y: Double(plaidPrev.position.y))
+        spawnLabel(text: "Cost: 1000", x: Double(goldPrev.position.x - ScreenSize.width * 0.15), y: Double(goldPrev.position.y))
+        spawnLabel(text: "Rick", x: Double(rickPrev.position.x + ScreenSize.width * 0.15), y: Double(rickPrev.position.y))
+        spawnLabel(text: "Kric", x: Double(kricPrev.position.x + ScreenSize.width * 0.15), y: Double(kricPrev.position.y))
+        spawnLabel(text: "Little Boy Blue", x: Double(bluePrev.position.x + ScreenSize.width * 0.15), y: Double(bluePrev.position.y))
+        spawnLabel(text: "Bad In Plaid", x: Double(plaidPrev.position.x) + Double(ScreenSize.width * 0.15), y: Double(plaidPrev.position.y))
+        spawnLabel(text: "Golden Boy", x: Double(goldPrev.position.x) + Double(ScreenSize.width * 0.15), y: Double(goldPrev.position.y))
         updateSelected()
     }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
