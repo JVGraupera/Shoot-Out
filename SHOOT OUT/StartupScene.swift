@@ -24,7 +24,8 @@ class StartupScene: SKScene {
     //Sets up the "Shoot Out" title
     func titleSetup() {
         let title = SKSpriteNode(imageNamed: "GameTitle")
-        title.size = CGSize(width: 250, height: 150)
+        title.size = CGSize(width: 150, height: 100)
+        title.scaleTo(screenWidthPercentage: 0.3)
         title.zRotation = -1.57
         title.position = CGPoint(x: ScreenSize.width * 0.1, y: ScreenSize.height * 0.05)
         addChild(title)
@@ -41,6 +42,7 @@ class StartupScene: SKScene {
         playButton.texture = SKTexture(imageNamed: "Play3.0")
         playButton.position = CGPoint(x: ScreenSize.width * -0.4 , y: 0)
         playButton.size = CGSize(width: 100, height: 75)
+        playButton.scaleTo(screenWidthPercentage: 0.2)
         playButton.zRotation = -1.57
         self.addChild(playButton)
 
