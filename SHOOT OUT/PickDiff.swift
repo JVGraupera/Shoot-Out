@@ -42,7 +42,7 @@ class PickDiff: SKScene {
         easyButton.texture = SKTexture(imageNamed: "Easy")
         easyButton.position = CGPoint(x: 0, y: ScreenSize.height * 0.1)
         easyButton.size = CGSize(width: 100, height: 75)
-        easyButton.scaleTo(screenWidthPercentage: 0.2)
+        easyButton.scaleTo(screenWidthPercentage: 0.25)
         easyButton.zRotation = -1.57
         self.addChild(easyButton)
     }
@@ -60,7 +60,7 @@ class PickDiff: SKScene {
         hardButton.texture = SKTexture(imageNamed: "HardButton")
         hardButton.position = CGPoint(x: 0 , y: ScreenSize.height * -0.1)
         hardButton.size = CGSize(width: 100, height: 75)
-        hardButton.scaleTo(screenWidthPercentage: 0.2)
+        hardButton.scaleTo(screenWidthPercentage: 0.25)
         hardButton.zRotation = -1.57
         self.addChild(hardButton)
     }
@@ -88,7 +88,7 @@ class PickDiff: SKScene {
         moveLabel.fontColor = UIColor.black
         moveLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
         moveLabel.zRotation = CGFloat(-Double.pi/2)
-        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0.15, y: analogJoystick.position.y - ScreenSize.height * 0.04)
+        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0.2, y: analogJoystick.position.y - ScreenSize.height * 0.04)
         addChild(moveLabel)
         
     }
@@ -98,18 +98,18 @@ class PickDiff: SKScene {
         aimLabel.fontColor = UIColor.black
         aimLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
         aimLabel.zRotation = CGFloat(-Double.pi/2)
-        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + ScreenSize.width * 0.15, y: analogJoystickTwo.position.y + ScreenSize.height * 0.04)
+        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + ScreenSize.width * 0.2, y: analogJoystickTwo.position.y + ScreenSize.height * 0.04)
         addChild(aimLabel)
         
     }
     lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.15, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
+        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
         js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * 0.375)
         js.name = "joy"
         return js
     }()
     lazy var analogJoystickTwo: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.15, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
+        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
         js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * -0.375)
         js.name = "joy"
         return js
