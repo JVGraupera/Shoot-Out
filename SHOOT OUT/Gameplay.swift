@@ -232,6 +232,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         sprite.position = pos
         sprite.physicsBody = SKPhysicsBody(rectangleOf: size)
         sprite.physicsBody?.affectedByGravity = false
+        sprite.physicsBody?.isDynamic = false
         sprite.name = "wall"
         sprite.physicsBody?.mass = 500
         addChild(sprite)
@@ -269,7 +270,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         sprite.zRotation = -1.57
         sprite.zPosition = 2
         sprite.name = "button"
-        sprite.scaleTo(screenWidthPercentage: 0.2)
+        sprite.scaleTo(screenWidthPercentage: 0.25)
         return sprite
     }()
     //Ends the game
@@ -356,7 +357,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         bad.physicsBody?.categoryBitMask = PhysicsCategory.bad
         bad.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
         bad.physicsBody?.collisionBitMask = PhysicsCategory.cac
-        bad.physicsBody?.mass = 500
+        bad.physicsBody?.isDynamic = false
         bad.name = "bad"
         let track = buildAction(hero: hero, bad: bad)
         let shoot = SKAction.run {
@@ -370,6 +371,29 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         addChild(bad)
         bad.run(SKAction.repeatForever(seqShoot))
         bad.run(SKAction.repeatForever(seq))
+    }
+    //Creates the players character
+    @objc lazy var hero: SKSpriteNode = {
+        // TODO: name is confusing
+        var sprite = SKSpriteNode(imageNamed: "Bad4")
+        sprite.position = CGPoint.zero
+        sprite.zPosition = 2
+        sprite.scaleTo(screenWidthPercentage: 0.145)
+        sprite.physicsBody = SKPhysicsBody(circleOfRadius: ScreenSize.width * 0.045)
+        sprite.physicsBody?.affectedByGravity = false
+        sprite.physicsBody?.categoryBitMask = PhysicsCategory.hero
+        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
+        sprite.physicsBody?.collisionBitMask = PhysicsCategory.cac
+        sprite.name = "hero"
+        return sprite
+    }()
+    //Creates the players legs
+    func heroLegSetup() {
+        heroLegs = SKSpriteNode(imageNamed: "kcirNoLegs")
+        heroLegs.scaleTo(screenWidthPercentage: 0.135)
+        heroLegs.zPosition = 1
+        heroLegs.position = CGPoint.zero
+        heroLegs.name = "heroLegs"
     }
     //Spawns enemy that moves
     @objc func spawnShort() {
@@ -388,14 +412,15 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
             randX += 100
             randY = 0
         }
+        bad.size = CGSize(width: 100, height: 100)
         bad.position = CGPoint(x: randX, y: randY)
-        bad.scaleTo(screenWidthPercentage: 0.075)
+        bad.scaleTo(screenWidthPercentage: 0.07)
         bad.physicsBody = SKPhysicsBody(circleOfRadius: bad.size.width / 2)
         bad.physicsBody?.affectedByGravity = false
         bad.physicsBody?.categoryBitMask = PhysicsCategory.short
         bad.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
         bad.physicsBody?.collisionBitMask = PhysicsCategory.cac
-        bad.physicsBody?.mass = 500
+        bad.physicsBody?.isDynamic = false
         bad.name = "short"
         let track = buildAction(hero: hero, bad: bad)
         let shoot = SKAction.run {
@@ -441,7 +466,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         bad.physicsBody?.categoryBitMask = PhysicsCategory.dual
         bad.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
         bad.physicsBody?.collisionBitMask = PhysicsCategory.cac
-        bad.physicsBody?.mass = 500
+        bad.physicsBody?.isDynamic = false
         bad.name = "Dual"
         let track = buildAction(hero: hero, bad: bad)
         let shoot = SKAction.run {
@@ -485,12 +510,12 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
             randX += 150
         }
         cac.position = CGPoint(x: randX, y: randY)
-        cac.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 15, height: 50))
+        cac.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.05, height: ScreenSize.height * 0.085))
         cac.physicsBody?.affectedByGravity = false
         cac.physicsBody?.categoryBitMask = PhysicsCategory.cac
         cac.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
         cac.physicsBody?.collisionBitMask = PhysicsCategory.bullet
-        cac.physicsBody?.mass = 100
+        cac.physicsBody?.isDynamic = false
         cac.scaleTo(screenWidthPercentage: 0.15)
         cac.name = "Cac"
         cac.zRotation = -1.57
@@ -574,36 +599,14 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         changeDifficulty.isHidden = true
         resetButton.isHidden = true
     }
-    //Creates the players character
-    @objc lazy var hero: SKSpriteNode = {
-        // TODO: name is confusing
-        var sprite = SKSpriteNode(imageNamed: "Bad4")
-        sprite.position = CGPoint.zero
-        sprite.zPosition = 2
-        sprite.scaleTo(screenWidthPercentage: 0.145)
-        sprite.physicsBody = SKPhysicsBody(circleOfRadius: 18)
-        sprite.physicsBody?.affectedByGravity = false
-        sprite.physicsBody?.categoryBitMask = PhysicsCategory.hero
-        sprite.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
-        sprite.physicsBody?.collisionBitMask = PhysicsCategory.cac
-        sprite.name = "hero"
-        return sprite
-    }()
-    //Creates the players legs
-    func heroLegSetup() {
-        heroLegs = SKSpriteNode(imageNamed: "kcirNoLegs")
-        heroLegs.scaleTo(screenWidthPercentage: 0.135)
-        heroLegs.zPosition = 1
-        heroLegs.position = CGPoint.zero
-        heroLegs.name = "heroLegs"
-    }
+    
     //Spawns a lable at a given point
     func spawnLabel(text: String, pos: CGPoint, label : SKLabelNode) {
         label.fontName = "AmericanTypewriter"
         label.position = pos
         label.text = text
         label.zRotation = CGFloat(-Double.pi / 2)
-        label.fontSize = 20
+        label.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
         label.fontColor = UIColor.black
         label.name = "gameLabel"
         label.isHidden = true
@@ -631,7 +634,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
             equipOnSkin(name: "plaid3.0", bodyScale: 0.14, legScale: 0.145, legArray: jeanArray)
         }
         if UserDefaults().integer(forKey: "goldSkin") == 2 {
-            equipOnSkin(name: "solidGold", bodyScale: 0.14, legScale: 0.145, legArray: goldArray)
+            equipOnSkin(name: "solidGold", bodyScale: 0.145, legScale: 0.145, legArray: goldArray)
         }
         
     }
@@ -712,13 +715,17 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         let converted = hero.convert(CGPoint(x: gunx, y: guny), to: self)
         
         // Determine the direction of the bullet based on the character's rotation
-        let vector = rotate(vector: CGVector(dx: 0.225, dy: 0), angle:hero.zRotation+rotationOffset)
+        let vector = rotate(vector: CGVector(dx: 35, dy: 0), angle:hero.zRotation+rotationOffset)
         
         // Create a bullet with a physics body
-        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: 4, height: 4))
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 2)
+        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
         bullet.physicsBody?.affectedByGravity = false
         bullet.zPosition = 1
+        if UserDefaults().integer(forKey: "goldSkin") == 2 {
+            bullet.color = UIColor.yellow
+        }
+        bullet.physicsBody?.mass = 0.1
         bullet.position = CGPoint(x: converted.x, y: converted.y)
         bullet.physicsBody?.categoryBitMask = PhysicsCategory.bullet
         bullet.physicsBody?.collisionBitMask = PhysicsCategory.bad
@@ -738,6 +745,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         ScoreLabel.zPosition = 40
         ScoreLabel.fontColor = UIColor.black
         ScoreLabel.text = "0"
+        ScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
         ScoreLabel.color = UIColor.black
         ScoreLabel.position = CGPoint(x: ScreenSize.width * 0.4, y: 0)
         ScoreLabel.zRotation = -1.57
@@ -776,7 +784,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     // Shoot func for the enemies
     func badShoot(sprite : SKSpriteNode) {
-        let bulletSpead = (UserDefaults().integer(forKey: "difficulty") == 0) ? 0.15 : 0.225;
+        let bulletSpead = (UserDefaults().integer(forKey: "difficulty") == 0) ? 25 : 35;
         let gunx = sprite.position.x + sprite.size.width * 0.3
         let guny = sprite.position.y
         let converted = sprite.convert(CGPoint(x: gunx, y: guny), to: sprite)
@@ -785,9 +793,10 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         let vector = rotate(vector: CGVector(dx: bulletSpead, dy: 0), angle:sprite.zRotation+rotationOffset)
         
         // Create a bullet with a physics body
-        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: 4, height: 4))
+        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
         bullet.zPosition = 1
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 2)
+        bullet.physicsBody?.mass = 0.1
         bullet.physicsBody?.affectedByGravity = false
         bullet.position = CGPoint(x: converted.x, y: converted.y)
         bullet.physicsBody?.categoryBitMask = PhysicsCategory.bullet
@@ -799,7 +808,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     //Shoots two gunned enemy's other gun
     func dualShoot(sprite : SKNode) {
-        let bulletSpead = (UserDefaults().integer(forKey: "difficulty") == 0) ? 0.15 : 0.225;
+        let bulletSpead = (UserDefaults().integer(forKey: "difficulty") == 0) ? 25 : 35;
         let gunx = sprite.position.x - 15
         let guny = sprite.position.y - 15
         let converted = sprite.convert(CGPoint(x: gunx, y: guny), to: sprite)
@@ -808,9 +817,10 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         let vector = rotate(vector: CGVector(dx: bulletSpead, dy: 0), angle:sprite.zRotation+rotationOffset)
         
         // Create a bullet with a physics body
-        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: 4, height: 4))
+        let bullet = SKSpriteNode(color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size:CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
+        bullet.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
         bullet.zPosition = 1
-        bullet.physicsBody = SKPhysicsBody(circleOfRadius: 2)
+        bullet.physicsBody?.mass = 0.1
         bullet.physicsBody?.affectedByGravity = false
         bullet.position = CGPoint(x: converted.x, y: converted.y)
         bullet.physicsBody?.categoryBitMask = PhysicsCategory.bullet
