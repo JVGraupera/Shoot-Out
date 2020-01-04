@@ -7,10 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F01C31923C0593200EE4ED1 /* gold.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C31423C0593200EE4ED1 /* gold.swift */; };
+		3F01C31A23C0593200EE4ED1 /* kric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C31523C0593200EE4ED1 /* kric.swift */; };
+		3F01C31B23C0593200EE4ED1 /* horse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C31623C0593200EE4ED1 /* horse.swift */; };
+		3F01C31C23C0593200EE4ED1 /* rick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C31723C0593200EE4ED1 /* rick.swift */; };
+		3F01C31D23C0593200EE4ED1 /* jean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C31823C0593200EE4ED1 /* jean.swift */; };
+		3F01C33123C05C6A00EE4ED1 /* Reset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C32F23C05C6A00EE4ED1 /* Reset.swift */; };
+		3F01C33323C05C7B00EE4ED1 /* SoundController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C33223C05C7B00EE4ED1 /* SoundController.swift */; };
+		3F01C33D23C05F6600EE4ED1 /* PlayerLegs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C33B23C05F6600EE4ED1 /* PlayerLegs.swift */; };
+		3F01C33E23C05F6600EE4ED1 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C33C23C05F6600EE4ED1 /* Player.swift */; };
+		3F01C34023C05F7200EE4ED1 /* Bad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C33F23C05F7200EE4ED1 /* Bad.swift */; };
+		3F01C34423C05F8100EE4ED1 /* Cactus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C34123C05F8000EE4ED1 /* Cactus.swift */; };
+		3F01C34523C05F8100EE4ED1 /* Dual.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C34223C05F8000EE4ED1 /* Dual.swift */; };
+		3F01C34623C05F8100EE4ED1 /* Bullet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C34323C05F8000EE4ED1 /* Bullet.swift */; };
+		3F01C34923C05FC600EE4ED1 /* Power.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C34723C05FC500EE4ED1 /* Power.swift */; };
+		3F01C34A23C05FC600EE4ED1 /* Short.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F01C34823C05FC600EE4ED1 /* Short.swift */; };
 		3F03957C23367A14004BD11A /* StartupScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03957B23367A13004BD11A /* StartupScene.swift */; };
 		3F03957E23369C28004BD11A /* PickDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03957D23369C28004BD11A /* PickDiff.swift */; };
 		3F0395822336B2A3004BD11A /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F0395812336B2A3004BD11A /* Store.swift */; };
 		3F03958F2337117F004BD11A /* WalkingAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F03958E2337117F004BD11A /* WalkingAnimation.swift */; };
+		3F3330C323C0667D0015534B /* Gun Shot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F3330C223C0667D0015534B /* Gun Shot.mp3 */; };
+		3F3330C523C066870015534B /* Gun Shot2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F3330C423C066870015534B /* Gun Shot2.mp3 */; };
+		3F3330C723C0668E0015534B /* Gun Shot3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F3330C623C0668E0015534B /* Gun Shot3.mp3 */; };
+		3F3330C923C066A60015534B /* The_Gunfight.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F3330C823C066A60015534B /* The_Gunfight.mp3 */; };
+		3F3330CB23C066AD0015534B /* GunCocking.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3F3330CA23C066AC0015534B /* GunCocking.mp3 */; };
 		3F435C3C22D2B962006D2E94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F435C3A22D2B962006D2E94 /* Main.storyboard */; };
 		3F435C3E22D2B963006D2E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F435C3D22D2B963006D2E94 /* Assets.xcassets */; };
 		3F435C4C22D2B963006D2E94 /* SHOOT_OUTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F435C4B22D2B963006D2E94 /* SHOOT_OUTTests.swift */; };
@@ -40,10 +60,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3F01C31423C0593200EE4ED1 /* gold.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gold.swift; sourceTree = "<group>"; };
+		3F01C31523C0593200EE4ED1 /* kric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kric.swift; sourceTree = "<group>"; };
+		3F01C31623C0593200EE4ED1 /* horse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = horse.swift; sourceTree = "<group>"; };
+		3F01C31723C0593200EE4ED1 /* rick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = rick.swift; sourceTree = "<group>"; };
+		3F01C31823C0593200EE4ED1 /* jean.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = jean.swift; sourceTree = "<group>"; };
+		3F01C32F23C05C6A00EE4ED1 /* Reset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Reset.swift; path = "../People & Things/Reset.swift"; sourceTree = "<group>"; };
+		3F01C33223C05C7B00EE4ED1 /* SoundController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundController.swift; sourceTree = "<group>"; };
+		3F01C33B23C05F6600EE4ED1 /* PlayerLegs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerLegs.swift; sourceTree = "<group>"; };
+		3F01C33C23C05F6600EE4ED1 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		3F01C33F23C05F7200EE4ED1 /* Bad.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bad.swift; sourceTree = "<group>"; };
+		3F01C34123C05F8000EE4ED1 /* Cactus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cactus.swift; sourceTree = "<group>"; };
+		3F01C34223C05F8000EE4ED1 /* Dual.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dual.swift; sourceTree = "<group>"; };
+		3F01C34323C05F8000EE4ED1 /* Bullet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bullet.swift; sourceTree = "<group>"; };
+		3F01C34723C05FC500EE4ED1 /* Power.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Power.swift; sourceTree = "<group>"; };
+		3F01C34823C05FC600EE4ED1 /* Short.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Short.swift; sourceTree = "<group>"; };
 		3F03957B23367A13004BD11A /* StartupScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupScene.swift; sourceTree = "<group>"; };
 		3F03957D23369C28004BD11A /* PickDiff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickDiff.swift; sourceTree = "<group>"; };
 		3F0395812336B2A3004BD11A /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		3F03958E2337117F004BD11A /* WalkingAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkingAnimation.swift; sourceTree = "<group>"; };
+		3F3330C223C0667D0015534B /* Gun Shot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gun Shot.mp3"; sourceTree = "<group>"; };
+		3F3330C423C066870015534B /* Gun Shot2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gun Shot2.mp3"; sourceTree = "<group>"; };
+		3F3330C623C0668E0015534B /* Gun Shot3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Gun Shot3.mp3"; sourceTree = "<group>"; };
+		3F3330C823C066A60015534B /* The_Gunfight.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = The_Gunfight.mp3; sourceTree = "<group>"; };
+		3F3330CA23C066AC0015534B /* GunCocking.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = GunCocking.mp3; sourceTree = "<group>"; };
 		3F435C2D22D2B962006D2E94 /* SHOOT OUT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SHOOT OUT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F435C3B22D2B962006D2E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F435C3D22D2B963006D2E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,12 +127,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F01C34F23C0646C00EE4ED1 /* People & Things */ = {
+			isa = PBXGroup;
+			children = (
+				3F01C33B23C05F6600EE4ED1 /* PlayerLegs.swift */,
+				3F01C33F23C05F7200EE4ED1 /* Bad.swift */,
+				3F01C33C23C05F6600EE4ED1 /* Player.swift */,
+				3F01C34323C05F8000EE4ED1 /* Bullet.swift */,
+				3F01C34223C05F8000EE4ED1 /* Dual.swift */,
+				3F01C34123C05F8000EE4ED1 /* Cactus.swift */,
+				3F01C34723C05FC500EE4ED1 /* Power.swift */,
+				3F01C34823C05FC600EE4ED1 /* Short.swift */,
+			);
+			path = "People & Things";
+			sourceTree = "<group>";
+		};
+		3F01C35023C064B300EE4ED1 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3F01C32F23C05C6A00EE4ED1 /* Reset.swift */,
+				3F0395812336B2A3004BD11A /* Store.swift */,
+				3F435C8F22D2EDD5006D2E94 /* Gameplay.swift */,
+				3F03957B23367A13004BD11A /* StartupScene.swift */,
+				3F03957D23369C28004BD11A /* PickDiff.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		3F03958323370999004BD11A /* Animations */ = {
 			isa = PBXGroup;
 			children = (
+				3F01C31423C0593200EE4ED1 /* gold.swift */,
+				3F01C31623C0593200EE4ED1 /* horse.swift */,
+				3F01C31823C0593200EE4ED1 /* jean.swift */,
+				3F01C31523C0593200EE4ED1 /* kric.swift */,
+				3F01C31723C0593200EE4ED1 /* rick.swift */,
 				3F03958E2337117F004BD11A /* WalkingAnimation.swift */,
 			);
 			path = Animations;
+			sourceTree = "<group>";
+		};
+		3F3330CC23C066C70015534B /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				3F3330CA23C066AC0015534B /* GunCocking.mp3 */,
+				3F3330C823C066A60015534B /* The_Gunfight.mp3 */,
+				3F3330C423C066870015534B /* Gun Shot2.mp3 */,
+				3F3330C623C0668E0015534B /* Gun Shot3.mp3 */,
+				3F3330C223C0667D0015534B /* Gun Shot.mp3 */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 		3F435C2422D2B962006D2E94 = {
@@ -119,17 +203,17 @@
 			isa = PBXGroup;
 			children = (
 				3F53F57722F0E22B00856D42 /* SHOOT OUT.entitlements */,
+				3F01C33223C05C7B00EE4ED1 /* SoundController.swift */,
 				3F435C6C22D2D9D3006D2E94 /* AnalogJoystick.swift */,
 				3F435C8522D2EA34006D2E94 /* AppDelegate.swift */,
 				3F435C3A22D2B962006D2E94 /* Main.storyboard */,
 				3F435C7022D2D9E1006D2E94 /* Extensions.swift */,
-				3F435C3D22D2B963006D2E94 /* Assets.xcassets */,
 				3F435C9122D2EE5B006D2E94 /* UIViewController.swift */,
-				3F03957B23367A13004BD11A /* StartupScene.swift */,
-				3F03957D23369C28004BD11A /* PickDiff.swift */,
-				3F435C8F22D2EDD5006D2E94 /* Gameplay.swift */,
-				3F0395812336B2A3004BD11A /* Store.swift */,
 				3F435C4222D2B963006D2E94 /* Info.plist */,
+				3F435C3D22D2B963006D2E94 /* Assets.xcassets */,
+				3F3330CC23C066C70015534B /* Sounds */,
+				3F01C35023C064B300EE4ED1 /* Scenes */,
+				3F01C34F23C0646C00EE4ED1 /* People & Things */,
 				3F03958323370999004BD11A /* Animations */,
 			);
 			path = "SHOOT OUT";
@@ -262,7 +346,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3F3330CB23C066AD0015534B /* GunCocking.mp3 in Resources */,
 				3F435C3C22D2B962006D2E94 /* Main.storyboard in Resources */,
+				3F3330C523C066870015534B /* Gun Shot2.mp3 in Resources */,
+				3F3330C723C0668E0015534B /* Gun Shot3.mp3 in Resources */,
+				3F3330C323C0667D0015534B /* Gun Shot.mp3 in Resources */,
+				3F3330C923C066A60015534B /* The_Gunfight.mp3 in Resources */,
 				3F435C3E22D2B963006D2E94 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,14 +378,29 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F435C6D22D2D9D3006D2E94 /* AnalogJoystick.swift in Sources */,
+				3F01C34023C05F7200EE4ED1 /* Bad.swift in Sources */,
+				3F01C31D23C0593200EE4ED1 /* jean.swift in Sources */,
+				3F01C31A23C0593200EE4ED1 /* kric.swift in Sources */,
+				3F01C34A23C05FC600EE4ED1 /* Short.swift in Sources */,
 				3F03957E23369C28004BD11A /* PickDiff.swift in Sources */,
 				3F435C8622D2EA34006D2E94 /* AppDelegate.swift in Sources */,
+				3F01C31923C0593200EE4ED1 /* gold.swift in Sources */,
 				3F0395822336B2A3004BD11A /* Store.swift in Sources */,
+				3F01C33323C05C7B00EE4ED1 /* SoundController.swift in Sources */,
+				3F01C33E23C05F6600EE4ED1 /* Player.swift in Sources */,
+				3F01C33D23C05F6600EE4ED1 /* PlayerLegs.swift in Sources */,
+				3F01C33123C05C6A00EE4ED1 /* Reset.swift in Sources */,
 				3F435C9022D2EDD5006D2E94 /* Gameplay.swift in Sources */,
+				3F01C31B23C0593200EE4ED1 /* horse.swift in Sources */,
+				3F01C34423C05F8100EE4ED1 /* Cactus.swift in Sources */,
+				3F01C34523C05F8100EE4ED1 /* Dual.swift in Sources */,
 				3F03958F2337117F004BD11A /* WalkingAnimation.swift in Sources */,
 				3F435C7122D2D9E1006D2E94 /* Extensions.swift in Sources */,
 				3F03957C23367A14004BD11A /* StartupScene.swift in Sources */,
 				3F435C9222D2EE5C006D2E94 /* UIViewController.swift in Sources */,
+				3F01C34923C05FC600EE4ED1 /* Power.swift in Sources */,
+				3F01C31C23C0593200EE4ED1 /* rick.swift in Sources */,
+				3F01C34623C05F8100EE4ED1 /* Bullet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,12 +568,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TTWWS4GAXY;
 				INFOPLIST_FILE = "SHOOT OUT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = "James.SHOOT-OUT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -482,12 +588,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TTWWS4GAXY;
 				INFOPLIST_FILE = "SHOOT OUT/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1;
 				PRODUCT_BUNDLE_IDENTIFIER = "James.SHOOT-OUT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

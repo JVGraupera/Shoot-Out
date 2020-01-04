@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:SHOOT OUT.xcodeproj">
+      location = "group:/Users/jamesgraupera/Documents/GitHub/Shoot-Out/SHOOT OUT/Gun Shot.mp3">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "New Group">
+   </Group>
+   <FileRef
+      location = "self:">
    </FileRef>
 </Workspace>
