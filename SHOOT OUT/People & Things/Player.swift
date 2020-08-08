@@ -14,7 +14,7 @@ class Player: SKSpriteNode {//, SKPhysicsContactDelegate {
     init() {
         let texture = SKTexture(imageNamed: "Bad4")
         super.init(texture: texture, color: .clear, size: texture.size())
-        self.scaleTo(screenWidthPercentage: 0.13)
+        self.scaleTo(screenWidthPercentage: 0.05)
         self.zPosition = 2
         self.name = "hero"
         self.physicsBody = SKPhysicsBody(circleOfRadius: ScreenSize.width * 0.045)

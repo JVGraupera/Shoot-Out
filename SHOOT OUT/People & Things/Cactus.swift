@@ -20,9 +20,8 @@ class Cactus: SKSpriteNode {
         self.physicsBody?.contactTestBitMask = PhysicsCategory.bullet
         self.physicsBody?.collisionBitMask = PhysicsCategory.bullet
         self.physicsBody?.isDynamic = false
-        self.scaleTo(screenWidthPercentage: 0.15)
+        self.scaleTo(screenWidthPercentage: 0.1)
         self.name = "Cac"
-        self.zRotation = -1.57
     }
     
     required init?(coder aDecoder: NSCoder) {

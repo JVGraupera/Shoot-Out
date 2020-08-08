@@ -261,8 +261,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         ScoreLabel.text = "0"
         ScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 25
         ScoreLabel.color = UIColor.black
-        ScoreLabel.position = CGPoint(x: ScreenSize.width * 0.4, y: 0)
-        ScoreLabel.zRotation = -1.57
+        ScoreLabel.position = CGPoint(x: 0, y: ScreenSize.height * 0.4)
         ScoreLabel.name = "gameLabel"
         addChild(ScoreLabel)
     }

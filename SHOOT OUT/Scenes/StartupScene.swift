@@ -16,7 +16,7 @@ class StartupScene: SKScene {
     //Sets up background of scene
     lazy var background: SKSpriteNode = {
         var sprite = SKSpriteNode() 
-        sprite.texture = SKTexture(imageNamed: "StartScreen")
+        sprite.texture = SKTexture(imageNamed: "StartScreentest")
         sprite.size = CGSize(width: ScreenSize.width, height: ScreenSize.height)
         sprite.position = CGPoint.zero
         sprite.zPosition = -1000
@@ -27,9 +27,9 @@ class StartupScene: SKScene {
     func titleSetup() {
         let title = SKSpriteNode(imageNamed: "GameTitle")
         title.size = CGSize(width: 150, height: 100)
-        title.scaleTo(screenWidthPercentage: 0.4)
-        title.zRotation = -1.57
-        title.position = CGPoint(x: ScreenSize.width * 0.1, y: ScreenSize.height * 0.1)
+        title.scaleTo(screenWidthPercentage: 0.35)
+        title.zRotation = 0
+        title.position = CGPoint(x: ScreenSize.width * -0.075, y: ScreenSize.height * 0.15)
         addChild(title)
     }
     //Plays the game
@@ -42,10 +42,10 @@ class StartupScene: SKScene {
     func playButton(view : SKView) {
         playButton = SKSpriteNode()
         playButton.texture = SKTexture(imageNamed: "Play3.0")
-        playButton.position = CGPoint(x: ScreenSize.width * -0.4 , y: 0)
+        playButton.position = CGPoint(x: ScreenSize.width * 0 , y: ScreenSize.height * -0.35)
         playButton.size = CGSize(width: 100, height: 75)
-        playButton.scaleTo(screenWidthPercentage: 0.2)
-        playButton.zRotation = -1.57
+        playButton.scaleTo(screenWidthPercentage: 0.15)
+        playButton.zRotation = 0
         self.addChild(playButton)
 
     }

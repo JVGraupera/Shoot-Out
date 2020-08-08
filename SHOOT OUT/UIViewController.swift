@@ -12,6 +12,7 @@ import AVFoundation
 
 class ViewController: UIViewController {
     var shareNumber = 0
+    static let VC = UIViewController()
     public lazy var skView: SKView = {
         let view = SKView()
         //        view.translatesAutoresizingMaskIntoConstraints = false

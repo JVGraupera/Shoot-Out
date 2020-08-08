@@ -15,7 +15,7 @@ class Short: SKSpriteNode {
        super.init(texture: texture, color: .clear, size: texture.size())
        self.size = CGSize(width: 100, height: 100)
        self.position = CGPoint(x: X, y: Y)
-       self.scaleTo(screenWidthPercentage: 0.07)
+       self.scaleTo(screenWidthPercentage: 0.05)
        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
        self.physicsBody?.affectedByGravity = false
        self.physicsBody?.categoryBitMask = PhysicsCategory.short

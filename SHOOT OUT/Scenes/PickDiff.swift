@@ -32,7 +32,6 @@ class PickDiff: SKScene {
         goldLabel.fontName = "AmericanTypewriter"
         goldLabel.fontColor = UIColor.black
         goldLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
-        goldLabel.zRotation = CGFloat(-Double.pi / 2)
         goldLabel.text = "Gold: \(UserDefaults().integer(forKey: "gold"))"
         self.addChild(goldLabel)
     }
@@ -40,46 +39,41 @@ class PickDiff: SKScene {
     func easyButtonSetup(view : SKView) {
         easyButton = SKSpriteNode()
         easyButton.texture = SKTexture(imageNamed: "Easy")
-        easyButton.position = CGPoint(x: 0, y: ScreenSize.height * 0.1)
+        easyButton.position = CGPoint(x: ScreenSize.width * 0.1, y: 0)
         easyButton.size = CGSize(width: 100, height: 75)
-        easyButton.scaleTo(screenWidthPercentage: 0.25)
-        easyButton.zRotation = -1.57
+        easyButton.scaleTo(screenWidthPercentage: 0.15)
         self.addChild(easyButton)
     }
     func easyHighScoreSetup() {
-        easyhighScoreLabel.position = CGPoint(x: ScreenSize.width * 0.2, y: 0)
+        easyhighScoreLabel.position = CGPoint(x: 0, y: ScreenSize.height * 0.25)
         easyhighScoreLabel.fontName = "AmericanTypewriter"
         easyhighScoreLabel.fontColor = UIColor.black
         easyhighScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
-        easyhighScoreLabel.zRotation = CGFloat(-Double.pi / 2)
         easyhighScoreLabel.text = "Easy Mode High Score: \(UserDefaults().integer(forKey: "HighScoreEasy"))"
         self.addChild(easyhighScoreLabel)
     }
     func hardButtonSetup(view : SKView) {
         hardButton = SKSpriteNode()
         hardButton.texture = SKTexture(imageNamed: "HardButton")
-        hardButton.position = CGPoint(x: 0 , y: ScreenSize.height * -0.1)
+        hardButton.position = CGPoint(x: ScreenSize.width * -0.1 , y: 0)
         hardButton.size = CGSize(width: 100, height: 75)
-        hardButton.scaleTo(screenWidthPercentage: 0.25)
-        hardButton.zRotation = -1.57
+        hardButton.scaleTo(screenWidthPercentage: 0.15)
         self.addChild(hardButton)
     }
     func highScoreSetup() {
-        highScoreLabel.position = CGPoint(x: ScreenSize.width * 0.25, y: 0)
+        highScoreLabel.position = CGPoint(x: 0, y: ScreenSize.height * 0.15)
         highScoreLabel.fontColor = UIColor.black
         highScoreLabel.fontName = "AmericanTypewriter"
         highScoreLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 20
-        highScoreLabel.zRotation = CGFloat(-Double.pi / 2)
         highScoreLabel.text = "Hard Mode High Score: \(UserDefaults().integer(forKey: "HighScore"))"
         self.addChild(highScoreLabel)
     }
     func storeButton(view : SKView) {
         storeButton = SKSpriteNode()
         storeButton.texture = SKTexture(imageNamed: "Store")
-        storeButton.position = CGPoint(x: ScreenSize.width * -0.4 , y: 0)
+        storeButton.position = CGPoint(x: 0 , y: ScreenSize.height * -0.4)
         storeButton.size = CGSize(width: 100, height: 75)
-        storeButton.scaleTo(screenWidthPercentage: 0.2)
-        storeButton.zRotation = -1.57
+        storeButton.scaleTo(screenWidthPercentage: 0.1)
         self.addChild(storeButton)
     }
     func moveTutorial() {
@@ -87,8 +81,7 @@ class PickDiff: SKScene {
         moveLabel.text = "This joystick moves you"
         moveLabel.fontColor = UIColor.black
         moveLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
-        moveLabel.zRotation = CGFloat(-Double.pi/2)
-        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0.2, y: analogJoystick.position.y - ScreenSize.height * 0.04)
+        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0, y: analogJoystick.position.y + ScreenSize.height * 0.15)
         addChild(moveLabel)
         
     }
@@ -97,20 +90,19 @@ class PickDiff: SKScene {
         aimLabel.text = "This joystick aims you"
         aimLabel.fontColor = UIColor.black
         aimLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
-        aimLabel.zRotation = CGFloat(-Double.pi/2)
-        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + ScreenSize.width * 0.2, y: analogJoystickTwo.position.y + ScreenSize.height * 0.04)
+        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + ScreenSize.width * 0.0, y: analogJoystickTwo.position.y + ScreenSize.height * 0.15)
         addChild(aimLabel)
         
     }
     lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
-        js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * 0.375)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.1, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet")))
+        js.position = CGPoint(x: ScreenSize.width * 0.34, y: ScreenSize.height * -0.35)
         js.name = "joy"
         return js
     }()
     lazy var analogJoystickTwo: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
-        js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * -0.375)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.1, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
+        js.position = CGPoint(x: ScreenSize.width * -0.34, y: ScreenSize.height * -0.35)
         js.name = "joy"
         return js
     }()

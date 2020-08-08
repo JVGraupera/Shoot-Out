@@ -13,7 +13,7 @@ class PlayerLegs: SKSpriteNode {
     init() {
       let texture = SKTexture(imageNamed: "kcirNoLegs")
       super.init(texture: texture, color: .clear, size: texture.size())
-      self.scaleTo(screenWidthPercentage: 0.13)
+      self.scaleTo(screenWidthPercentage: 0.1)
       self.zPosition = 1
       self.position = CGPoint.zero
       self.name = "heroLegs"

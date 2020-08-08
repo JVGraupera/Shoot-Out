@@ -30,6 +30,7 @@ func pb_takeSnapshot() -> UIImage {
     return image
     }
 }
+
 extension UIImage {
 
   func imageRotated(on degrees: CGFloat) -> UIImage {

@@ -14,7 +14,7 @@ class Bad: SKSpriteNode {
       let texture = SKTexture(imageNamed: "Rick2.0")
       super.init(texture: texture, color: .clear, size: texture.size())
       self.position = CGPoint(x: X, y: Y)
-      self.scaleTo(screenWidthPercentage: 0.1)
+        self.scaleTo(screenWidthPercentage: 0.05)
       self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2)
       self.physicsBody?.affectedByGravity = false
       self.physicsBody?.categoryBitMask = PhysicsCategory.bad

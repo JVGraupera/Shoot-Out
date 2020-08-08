@@ -12,6 +12,7 @@ import SceneKit
 class Reset: SKScene{
     var ScoreLabel = SKLabelNode(), highScoreLabel = SKLabelNode(), easyhighScoreLabel = SKLabelNode(), goldLabel = SKLabelNode()
     var Game: Gameplay = Gameplay()
+    var VC: UIViewController = UIViewController()
     var score: Int!
     var viewCon: ViewController = ViewController()
     //The Background
@@ -93,7 +94,7 @@ class Reset: SKScene{
                 self.view?.presentScene(scene)
             }
             else if ShareButton.contains(location) {
-                shareToInstaStories()
+                alert()
             }
         }
     }
@@ -132,8 +133,30 @@ class Reset: SKScene{
             UIApplication.shared.open(storiesUrl, options: [:], completionHandler: nil)
         } else {
             print("User doesn't have instagram on their device.")
+            let label = SKLabelNode(fontNamed: "AmericanTypewriter")
+            label.position = CGPoint(x: ScreenSize.width * 0.1, y: ScreenSize.height * 0)
+            label.text = "Error: You must be logged-in to Instagram to share"
+            label.zRotation = -1.57
+            label.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 35: 20
+            label.name = "storeLabel"
+            addChild(label)
         }
     }
+    }
+    func alert() {
+      let alertController = UIAlertController(title: "Want to share?", message: "Do you have your parents' permission to share on Instagram?", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Yes", style: .default, handler: { (action)  in self.shareToInstaStories()}))
+        alertController.addAction(UIAlertAction(title: "No", style: .default, handler: { (action)  in }))
+      var rootViewController = UIApplication.shared.keyWindow?.rootViewController
+      if let navigationController = rootViewController as? UINavigationController {
+          rootViewController = navigationController.viewControllers.first
+      }
+      if let tabBarController = rootViewController as? UITabBarController {
+          rootViewController = tabBarController.selectedViewController
+      }
+      //...
+      rootViewController?.present(alertController, animated: true, completion: nil)
+        
     }
     override func didMove(to view: SKView) {
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
