@@ -11,8 +11,8 @@ import SpriteKit
 
 class Bullet: SKSpriteNode {
     init(name: String) {
-        super.init(texture: nil, color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.01, height: ScreenSize.width * 0.01))
+        super.init(texture: nil, color: UIColor(displayP3Red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: ScreenSize.height * 0.01, height: ScreenSize.height * 0.01))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.height * 0.01, height: ScreenSize.height * 0.01))
         self.zPosition = 1
         self.physicsBody?.mass = 0.1
         self.physicsBody?.affectedByGravity = false

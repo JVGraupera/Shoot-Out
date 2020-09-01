@@ -90,7 +90,8 @@ class Store: SKScene {
         self.addChild(node)
     }
     func buySkin(name: String, price: Int, buyButton: SKSpriteNode, equipButton: SKSpriteNode) {
-        if UserDefaults().integer(forKey: "gold")  >= price && UserDefaults().integer(forKey: name) == 0 {
+      if UserDefaults().integer(forKey: name) == 0 {
+        if UserDefaults().integer(forKey: "gold")  >= price {
             UserDefaults().set(1, forKey: name)
             gold -= price
             updateGold()
@@ -99,103 +100,29 @@ class Store: SKScene {
         }
         else {
              let label = SKLabelNode(fontNamed: "AmericanTypewriter")
-             label.position = CGPoint(x: ScreenSize.width * 0.3, y: ScreenSize.height * 0)
+            label.position = CGPoint(x: 0, y: ScreenSize.height * -0.3)
              label.text = "Error: You don't have enough gold to buy that skin"
              label.fontColor = UIColor.red
              label.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 35: 20
              label.name = "storeLabel"
              addChild(label)
         }
+      }
     }
-    @objc func equipKric() {
-        if UserDefaults().integer(forKey: "kric") == 1 {
-            if UserDefaults().integer(forKey: "rick") == 2 {
-                UserDefaults().set(1, forKey: "rick")
+    @objc func equipSkin(name: String){
+        let names = ["rick",  "kric", "blue", "plaid", "goldSkin"]
+        names.forEach(){
+            if UserDefaults().integer(forKey: $0) == 2{
+                UserDefaults().set(1, forKey: $0)
             }
-            if UserDefaults().integer(forKey: "blue") == 2 {
-                UserDefaults().set(1, forKey: "blue")
-            }
-            if UserDefaults().integer(forKey: "plaid") == 2 {
-                UserDefaults().set(1, forKey: "plaid")
-            }
-            if UserDefaults().integer(forKey: "goldSkin") == 2 {
-                UserDefaults().set(1, forKey: "goldSkin")
-            }
-            UserDefaults().set(2, forKey: "kric")
+        }
+        if UserDefaults().integer(forKey: name) == 1{
+            UserDefaults().set(2, forKey: name)
             updateSelected()
         }
+        
     }
-    @objc func equipRick() {
-            if UserDefaults().integer(forKey: "kric") == 2 {
-                UserDefaults().set(1, forKey: "kric")
-            }
-            if UserDefaults().integer(forKey: "blue") == 2 {
-                UserDefaults().set(1, forKey: "blue")
-            }
-            if UserDefaults().integer(forKey: "plaid") == 2 {
-                UserDefaults().set(1, forKey: "plaid")
-            }
-            if UserDefaults().integer(forKey: "goldSkin") == 2 {
-                UserDefaults().set(1, forKey: "goldSkin")
-            }
-            UserDefaults().set(2, forKey: "rick")
-            updateSelected()
-    }
-    @objc func equipBlue() {
-        if UserDefaults().integer(forKey: "blue") == 1 {
-            if UserDefaults().integer(forKey: "kric") == 2 {
-                    UserDefaults().set(1, forKey: "kric")
-            }
-            if UserDefaults().integer(forKey: "rick") == 2 {
-                    UserDefaults().set(1, forKey: "rick")
-            }
-            if UserDefaults().integer(forKey: "plaid") == 2 {
-                    UserDefaults().set(1, forKey: "plaid")
-            }
-            if UserDefaults().integer(forKey: "goldSkin") == 2 {
-                UserDefaults().set(1, forKey: "goldSkin")
-            }
-            UserDefaults().set(2, forKey: "blue")
-            updateSelected()
-        }
-        }
-    
-    @objc func equipPlaid() {
-        if UserDefaults().integer(forKey: "plaid") == 1 {
-            if UserDefaults().integer(forKey: "kric") == 2 {
-                UserDefaults().set(1, forKey: "kric")
-            }
-            if UserDefaults().integer(forKey: "rick") == 2 {
-                UserDefaults().set(1, forKey: "rick")
-            }
-            if UserDefaults().integer(forKey: "blue") == 2 {
-                UserDefaults().set(1, forKey: "blue")
-            }
-            if UserDefaults().integer(forKey: "goldSkin") == 2 {
-                UserDefaults().set(1, forKey: "goldSkin")
-            }
-            UserDefaults().set(2, forKey: "plaid")
-            updateSelected()
-        }
-    }
-    @objc func equipGold() {
-        if UserDefaults().integer(forKey: "goldSkin") == 1 {
-            if UserDefaults().integer(forKey: "kric") == 2 {
-                UserDefaults().set(1, forKey: "kric")
-            }
-            if UserDefaults().integer(forKey: "rick") == 2 {
-                UserDefaults().set(1, forKey: "rick")
-            }
-            if UserDefaults().integer(forKey: "blue") == 2 {
-                UserDefaults().set(1, forKey: "blue")
-            }
-            if UserDefaults().integer(forKey: "plaid") == 2 {
-                UserDefaults().set(1, forKey: "plaid")
-            }
-            UserDefaults().set(2, forKey: "goldSkin")
-            updateSelected()
-        }
-    }
+  
     func setupSelected() {
         selected = SKLabelNode(text: "Equipped")
         selected.fontName = "AmericanTypewriter"
@@ -223,7 +150,7 @@ class Store: SKScene {
             selected.isHidden = false
         }
         if UserDefaults().integer(forKey: "goldSkin") == 2 {
-            selected.position = CGPoint(x: goldPrev.position.x + ScreenSize.width, y: goldPrev.position.y + ScreenSize.height * 0.25)
+            selected.position = CGPoint(x: goldPrev.position.x, y: goldPrev.position.y + ScreenSize.height * 0.25)
             selected.isHidden = false
         }
     }
@@ -250,7 +177,7 @@ class Store: SKScene {
         spawnButton(button: blueBuy, pos: CGPoint(x: bluePrev.position.x, y: bluePrev.position.y - ScreenSize.height * 0.25), imageName: "buy")
         spawnButton(button: blueEquip, pos: CGPoint(x: bluePrev.position.x, y: bluePrev.position.y - ScreenSize.height * 0.25), imageName: "Equip")
         spawnButton(button: plaidBuy, pos: CGPoint(x: plaidPrev.position.x, y: plaidPrev.position.y - ScreenSize.height * 0.25), imageName: "buy")
-        spawnButton(button: plaidEquip, pos: CGPoint(x: kricPrev.position.x, y: plaidPrev.position.y - ScreenSize.height * 0.25), imageName: "Equip")
+        spawnButton(button: plaidEquip, pos: CGPoint(x: plaidPrev.position.x, y: plaidPrev.position.y - ScreenSize.height * 0.25), imageName: "Equip")
         spawnButton(button: goldBuy, pos: CGPoint(x: goldPrev.position.x, y: goldPrev.position.y - ScreenSize.height * 0.25), imageName: "buy")
         spawnButton(button: goldEquip, pos: CGPoint(x: goldPrev.position.x, y: goldPrev.position.y - ScreenSize.height * 0.25), imageName: "Equip")
         spawnShop(skin: "kric", buyButton: kricBuy, equipButton: kricEquip)
@@ -279,35 +206,35 @@ class Store: SKScene {
                 pickDifficulty()
             }
             if rickEquip.contains(location) {
-                equipRick()
+                equipSkin(name: "rick")
                 updateSelected()
             }
             if kricBuy.contains(location) {
                 buySkin(name: "kric", price: 100, buyButton: kricBuy, equipButton: kricEquip)
             }
             if kricEquip.contains(location) {
-                equipKric()
+                equipSkin(name: "kric")
                 updateSelected()
             }
             if blueBuy.contains(location) {
                 buySkin(name: "blue", price: 100, buyButton: blueBuy, equipButton: blueEquip)
             }
             if blueEquip.contains(location) {
-                equipBlue()
+                equipSkin(name: "blue")
                 updateSelected()
             }
             if plaidBuy.contains(location) {
                 buySkin(name: "plaid", price: 100, buyButton: plaidBuy, equipButton: plaidEquip)
             }
             if plaidEquip.contains(location) {
-                equipPlaid()
+                equipSkin(name: "plaid")
                 updateSelected()
             }
             if goldBuy.contains(location) {
                 buySkin(name: "goldSkin", price: 1000, buyButton: goldBuy, equipButton: goldEquip)
             }
             if goldEquip.contains(location) {
-                equipGold()
+                equipSkin(name: "goldSkin")
                 updateSelected()
             }
             else if rickPrev.contains(location) {

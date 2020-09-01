@@ -157,7 +157,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     func giddyUp() {
         speedTimer.invalidate()
         velocityMultiplier = 0.11
-        heroLegs.scaleTo(screenWidthPercentage: 0.2)
+        heroLegs.scaleTo(screenWidthPercentage: 0.1)
         onHorse = true
         speedTimer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(dismount), userInfo: nil, repeats: false)
     }
@@ -165,16 +165,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     @objc func dismount() {
         onHorse = false
         velocityMultiplier = 0.07
-        if UserDefaults().integer(forKey: "rick") == 2 {
-            heroLegs.scaleTo(screenWidthPercentage: 0.135)
-        }
-        else if UserDefaults().integer(forKey: "kric") == 2 {
-            equipOnSkin(name: "Kric2.0", bodyScale: 0.14, legScale: 0.175, legArray: kricArray)
-            heroLegs.scaleTo(screenWidthPercentage: 0.175)
-        }
-        else {
-            heroLegs.scaleTo(screenWidthPercentage: 0.145)
-        }
+        heroLegs.scaleTo(screenWidthPercentage: 0.085)
     }
     //removes the children of the nodes to remove list
     override func didFinishUpdate()
@@ -300,7 +291,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     //Rolls to see if a dead enemy spawns a power up
     func doesDropPower(pos: CGPoint) {
         let chance = Int.random(in: 0...99)
-        if chance <= 14 {
+        if chance <= 15 {
             spawnPower(pos: pos)
         }
     }
@@ -321,15 +312,13 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     // Spawns basic enemy
     @objc func spawnBad() {
-        var randX = Double.random(in: (minX...maxX))
+        let randX = Double.random(in: (minX...maxX))
         var randY = Double.random(in: (minY...maxY))
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
-            randX += 100
-            randY = 0
+        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.175)) {
+            randY += Double(ScreenSize.height * 0.5)
         }
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY < Double(ScreenSize.height * 0.5) && randY > Double(ScreenSize.height * 0.3)) {
-            randX += 100
-            randY = 0
+        if (randX < Double(ScreenSize.width * 0.5) && randX > Double(ScreenSize.width * 0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.175)) {
+            randY += Double(ScreenSize.height * 0.5)
         }
         let bad = Bad(X: randX, Y: randY)
         var shot = 1.3
@@ -350,16 +339,14 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     //Spawns enemy that moves
     @objc func spawnShort() {
-        var randX = Double.random(in: (minX...maxX))
+        let randX = Double.random(in: (minX...maxX))
         var randY = Double.random(in: (minY...maxY))
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
-            randX += 100
-            randY = 0
-        }
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY < Double(ScreenSize.height * 0.5) && randY > Double(ScreenSize.height * 0.3)) {
-            randX += 100
-            randY = 0
-        }
+       if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.3)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
+           randY += Double(ScreenSize.height * 0.5)
+       }
+       if (randX < Double(ScreenSize.width * 0.5) && randX > Double(ScreenSize.width * 0.3)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
+           randY += Double(ScreenSize.height * 0.5)
+       }
         let short = Short(X: randX, Y: randY)
         let track = buildAction(hero: hero, bad: short)
         let shoot = SKAction.run {
@@ -378,15 +365,13 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     }
     //Spawns enemy with two guns
     func spawnDual() {
-        var randX = Double.random(in: (minX...maxX))
+        let randX = Double.random(in: (minX...maxX))
         var randY = Double.random(in: (minY...maxY))
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
-            randX += 100
-            randY = 0
+        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.3)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
+            randY += Double(ScreenSize.height * 0.5)
         }
-        if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY < Double(ScreenSize.height * 0.5) && randY > Double(ScreenSize.height * 0.3)) {
-            randX += 100
-            randY = 0
+        if (randX < Double(ScreenSize.width * 0.5) && randX > Double(ScreenSize.width * 0.3)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
+            randY += Double(ScreenSize.height * 0.5)
         }
         var shot = 0.75
         if UserDefaults().integer(forKey: "difficulty") == 0 {
@@ -435,19 +420,16 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         var randX = Double.random(in: (minX...maxX))
         var randY = Double.random(in: (minY...maxY))
         //stops cacti from spawning in the center
-        if randY > Double(ScreenSize.height * -0.05) && randY < 0 {
-            randY -= 200
-        }
-        if randY < Double(ScreenSize.height * 0.05) && randY > 0 {
-            randY += 200
+        if randY > Double(ScreenSize.height * -0.05) && randY < Double(ScreenSize.height * 0.05) && randX > Double(ScreenSize.width * -0.05) && randX < Double(ScreenSize.width * 0.05) {
+            randX += Double(ScreenSize.width * 0.05)
         }
 
         //stops cacti from spawning under Joysticks
         if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY > Double(ScreenSize.height * -0.5) && randY < Double(ScreenSize.height * -0.3)) {
-            randX += 150
+            randY += 100
         }
         if (randX > Double(ScreenSize.width * -0.5) && randX < Double(ScreenSize.width * -0.2)) && (randY < Double(ScreenSize.height * 0.5) && randY > Double(ScreenSize.height * 0.3)) {
-            randX += 150
+            randY += 100
         }
         let cac = Cactus(X: randX, Y: randY)
         addChild(cac)
@@ -481,7 +463,7 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         addChild(heroLegs)
         if UserDefaults().integer(forKey: "difficulty") == 1 {
             shootTimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(shoot), userInfo: nil, repeats: true)
-            BadTimer = Timer.scheduledTimer(timeInterval: 4.2, target: self, selector: #selector(spawnEnemy), userInfo: nil, repeats: true)
+            BadTimer = Timer.scheduledTimer(timeInterval: 4.15, target: self, selector: #selector(spawnEnemy), userInfo: nil, repeats: true)
         }
         else {
             shootTimer = Timer.scheduledTimer(timeInterval: 0.8, target: self, selector: #selector(shoot), userInfo: nil, repeats: true)
@@ -503,32 +485,32 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
     //Puts on the players selected skin
     func putOnSkin() {
         if UserDefaults().integer(forKey: "rick") == 2{
-            equipOnSkin(name: "Bad4", bodyScale: 0.14, legScale: 0.135, legArray: rickArray)
+            equipOnSkin(name: "Bad4", bodyScale: 0.08, legScale: 0.085, legArray: rickArray)
         }
         else if UserDefaults().integer(forKey: "kric") == 2 {
-            equipOnSkin(name: "Kric2.0", bodyScale: 0.14, legScale: 0.175, legArray: kricArray)
+            equipOnSkin(name: "Kric2.0", bodyScale: 0.08, legScale: 0.085, legArray: kricArray)
         }
         else if UserDefaults().integer(forKey: "blue") == 2 {
-            equipOnSkin(name: "babyBlue", bodyScale: 0.14, legScale: 0.145, legArray: jeanArray)
+            equipOnSkin(name: "babyBlue", bodyScale: 0.08, legScale: 0.085, legArray: jeanArray)
         }
         else if  UserDefaults().integer(forKey: "plaid") == 2 {
-            equipOnSkin(name: "plaid3.0", bodyScale: 0.14, legScale: 0.145, legArray: jeanArray)
+            equipOnSkin(name: "plaid3.0", bodyScale: 0.08, legScale: 0.085, legArray: jeanArray)
         }
         else if UserDefaults().integer(forKey: "goldSkin") == 2 {
-            equipOnSkin(name: "solidGold", bodyScale: 0.145, legScale: 0.145, legArray: goldArray)
+            equipOnSkin(name: "solidGold", bodyScale: 0.08, legScale: 0.085, legArray: goldArray)
         }
         
     }
     lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet2.0")))
-        js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * 0.375)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.12, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet")))
+        js.position = CGPoint(x: ScreenSize.width * -0.375, y: ScreenSize.height * -0.325)
         js.zPosition = NodesZPosition.joystick.rawValue
         js.name = "joy"
         return js
     }()
     lazy var analogJoystickTwo: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.height * 0.14, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
-        js.position = CGPoint(x: ScreenSize.width * -0.325, y: ScreenSize.height * -0.375)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.12, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
+        js.position = CGPoint(x: ScreenSize.width * 0.375, y: ScreenSize.height * -0.325)
         js.zPosition = NodesZPosition.joystick.rawValue
         js.name = "joy"
         return js

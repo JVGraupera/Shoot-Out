@@ -11,9 +11,9 @@ import SpriteKit
 
 class Power: SKSpriteNode {
     init(pos: CGPoint) {
-        super.init(texture: nil, color: .clear, size: CGSize(width: ScreenSize.width * 0.1, height: ScreenSize.width * 0.1))
+        super.init(texture: nil, color: .clear, size: CGSize(width: ScreenSize.width * 0.045, height: ScreenSize.width * 0.045))
         self.position = pos
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.05, height: ScreenSize.width * 0.05))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: ScreenSize.width * 0.045, height: ScreenSize.width * 0.045))
         self.physicsBody?.affectedByGravity = false
         self.physicsBody?.categoryBitMask = PhysicsCategory.power
         self.physicsBody?.contactTestBitMask = PhysicsCategory.hero

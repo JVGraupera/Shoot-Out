@@ -81,7 +81,7 @@ class PickDiff: SKScene {
         moveLabel.text = "This joystick moves you"
         moveLabel.fontColor = UIColor.black
         moveLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
-        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0, y: analogJoystick.position.y + ScreenSize.height * 0.15)
+        moveLabel.position = CGPoint(x: analogJoystick.position.x + ScreenSize.width * 0.05, y: analogJoystick.position.y + ScreenSize.height * 0.15)
         addChild(moveLabel)
         
     }
@@ -90,19 +90,19 @@ class PickDiff: SKScene {
         aimLabel.text = "This joystick aims you"
         aimLabel.fontColor = UIColor.black
         aimLabel.fontSize = (UIDevice.current.userInterfaceIdiom == .pad) ? 30: 15
-        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x + ScreenSize.width * 0.0, y: analogJoystickTwo.position.y + ScreenSize.height * 0.15)
+        aimLabel.position = CGPoint(x: analogJoystickTwo.position.x - ScreenSize.width * 0.05, y: analogJoystickTwo.position.y + ScreenSize.height * 0.15)
         addChild(aimLabel)
         
     }
     lazy var analogJoystick: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.width * 0.1, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet")))
-        js.position = CGPoint(x: ScreenSize.width * 0.34, y: ScreenSize.height * -0.35)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.12, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Feet")))
+        js.position = CGPoint(x: ScreenSize.width * -0.375, y: ScreenSize.height * -0.325)
         js.name = "joy"
         return js
     }()
     lazy var analogJoystickTwo: AnalogJoystick = {
-        let js = AnalogJoystick(diameter: ScreenSize.width * 0.1, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
-        js.position = CGPoint(x: ScreenSize.width * -0.34, y: ScreenSize.height * -0.35)
+        let js = AnalogJoystick(diameter: ScreenSize.width * 0.12, colors: nil, images: (substrate: UIImage.init(named: "Joy"), stick: UIImage.init(named: "Crosshair")))
+        js.position = CGPoint(x: ScreenSize.width * 0.375, y: ScreenSize.height * -0.325)
         js.name = "joy"
         return js
     }()
