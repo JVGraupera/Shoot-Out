@@ -446,10 +446,10 @@ class Gameplay: SKScene, SKPhysicsContactDelegate {
         goldArray = walkArray.goldArray as! [SKTexture]
         horseRunArray = walkArray.horseArray as! [SKTexture]
         addChild(background)
-        spawnWall(pos: CGPoint(x: 0, y: ScreenSize.height * -0.5 - 20), size: CGSize(width: ScreenSize.width, height: 5))
-        spawnWall(pos: CGPoint(x: 0, y: ScreenSize.height * 0.5 + 20), size: CGSize(width: ScreenSize.width, height: 5))
-        spawnWall(pos: CGPoint(x: ScreenSize.width * 0.5 + 20, y: 0), size: CGSize(width: 5, height: ScreenSize.height))
-        spawnWall(pos: CGPoint(x: ScreenSize.width * -0.5 - 20, y: 0), size: CGSize(width: 5, height: ScreenSize.height))
+        spawnWall(pos: CGPoint(x: 0, y: ScreenSize.height * -0.5 - 5), size: CGSize(width: ScreenSize.width, height: 5))
+        spawnWall(pos: CGPoint(x: 0, y: ScreenSize.height * 0.5 + 5), size: CGSize(width: ScreenSize.width, height: 5))
+        spawnWall(pos: CGPoint(x: ScreenSize.width * 0.5 + 5, y: 0), size: CGSize(width: 5, height: ScreenSize.height))
+        spawnWall(pos: CGPoint(x: ScreenSize.width * -0.5 - 5, y: 0), size: CGSize(width: 5, height: ScreenSize.height))
         setupJoystick()
         setupJoystickZ()
         textureArray = rickArray
